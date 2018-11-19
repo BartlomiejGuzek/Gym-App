@@ -80,6 +80,7 @@ namespace GymApp
 			gender = dataRowView.Row[4].ToString();
 			regDate = dataRowView.Row.Field<DateTime>("RegistrationDate");
 			cardID = dataRowView.Row[6].ToString();
+			Console.WriteLine(ID);
 		}
 
 		private void btn_Delete_Click(object sender, RoutedEventArgs e)

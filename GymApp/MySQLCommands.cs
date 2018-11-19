@@ -164,6 +164,7 @@ namespace GymApp
 			try
 			{
 				Connect();
+
 				MySqlCommand cmd = new MySqlCommand("UPDATE users SET Name = @name, Surname = @surname, Phone = @phone, Gender = @gender, RegistrationDate = @date, CardID = @cardID WHERE idUsers = @id", connection);
 				cmd.Parameters.Add("@name", MySqlDbType.VarChar, 45).Value = _name;
 				cmd.Parameters.Add("@surname", MySqlDbType.VarChar, 45).Value = _surname;
@@ -178,7 +179,7 @@ namespace GymApp
 			}
 			catch (Exception e)
 			{
-				Console.WriteLine("InsertUsers");
+				Console.WriteLine("UpdateUser");
 				Console.WriteLine(e.Message);
 			}
 		}
@@ -196,7 +197,7 @@ namespace GymApp
 			}
 			catch (Exception e)
 			{
-				Console.WriteLine("InsertUsers");
+				Console.WriteLine("DeleteUser");
 				Console.WriteLine(e.Message);
 			}
 		}

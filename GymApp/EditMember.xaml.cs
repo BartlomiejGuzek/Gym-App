@@ -41,8 +41,9 @@ namespace GymApp
 			tb_PhoneNumber.Text = phone;
 			tb_CardID.Text = _cardID;
 			membersWindow = _membersWindow;
+			cardID = _cardID;
 
-			if (gender == "Male")
+			if (_gender == "Male")
 			{
 				rb_Male.IsChecked = true;
 				rb_Female.IsChecked = false;
