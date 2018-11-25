@@ -39,8 +39,8 @@ namespace GymApp
 
 		private void refreshTimer_Tick(object sender, EventArgs e)
 		{
-			lb_MaleMembers.Content = MySQLCommands.GetMaleMembersCount();
-			lb_FemaleMembers.Content = MySQLCommands.GetFemaleMembersCount();
+			//lb_MaleMembers.Content = MySQLCommands.GetMaleMembersCount();
+			//lb_FemaleMembers.Content = MySQLCommands.GetFemaleMembersCount();
 			//lb_MaleActiveMembers.Content = MySQLCommands.GetActiveMaleMembersCount();
 			//lb_FemaleActiveMembers.Content = MySQLCommands.GetActiveFemaleMembersCount();
 		}

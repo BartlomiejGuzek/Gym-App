@@ -14,7 +14,7 @@ namespace GymApp
     class MySQLCommands
     {
 		static MySqlConnection connection;
-		static public string currentCardId;
+
 		//Utility functions
 		static public void Connect()
 		{
@@ -119,8 +119,16 @@ namespace GymApp
 		//Select funcitons
 		static public MySqlCommand GetUsers()
 		{
+				Connect();
+				MySqlCommand cmd = new MySqlCommand("SELECT * FROM users", connection);
+				return cmd;
+		}
+
+		static public MySqlCommand GetPayments(int _id)
+		{
 			Connect();
-			MySqlCommand cmd = new MySqlCommand("SELECT * FROM users", connection);
+			MySqlCommand cmd = new MySqlCommand("SELECT * FROM payments WHERE Users_idUsers = @id", connection);
+			cmd.Parameters.Add("@id", MySqlDbType.VarChar, 12).Value = _id;
 			return cmd;
 		}
 
@@ -173,7 +181,6 @@ namespace GymApp
 				cmd.Parameters.Add("@date", MySqlDbType.Date).Value = _date;
 				cmd.Parameters.Add("@cardID", MySqlDbType.VarChar, 12).Value = _cardId;
 				cmd.Parameters.Add("@id", MySqlDbType.VarChar, 12).Value = _id;
-
 				cmd.ExecuteNonQuery();
 				Close();
 			}
@@ -202,9 +209,21 @@ namespace GymApp
 			}
 		}
 
-		static public void DeletePayments()
+		static public void DeleteUserPayments(int _id)
 		{
-
+			try
+			{
+				Connect();
+				MySqlCommand cmd = new MySqlCommand("DELETE from payments WHERE Users_idUsers = @id", connection);
+				cmd.Parameters.Add("@id", MySqlDbType.VarChar, 12).Value = _id;
+				cmd.ExecuteNonQuery();
+				Close();
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("DeleteUserPayments");
+				Console.WriteLine(e.Message);
+			}
 		}
 
 		static public void DeleteActiveUsers()

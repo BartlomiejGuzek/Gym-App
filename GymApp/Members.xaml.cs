@@ -16,7 +16,7 @@ namespace GymApp
 	{
 		DataTable dataTable = new DataTable();
 		System.Windows.Threading.DispatcherTimer refreshTimer = new System.Windows.Threading.DispatcherTimer();
-
+		int count;
 		int ID;
 		string name;
 		string surname;
@@ -43,7 +43,6 @@ namespace GymApp
 		{
 			Console.WriteLine("refreshed");
 			dataTable.Load(MySQLCommands.GetUsers().ExecuteReader());
-			MySQLCommands.Close();
 			dg_Members.DataContext = dataTable;
 		}
 
@@ -72,6 +71,7 @@ namespace GymApp
 		{
 			btn_Edit.IsEnabled = true;
 			btn_Delete.IsEnabled = true;
+			btn_ViewPayments.IsEnabled = true;
 			DataRowView dataRowView = (DataRowView)dg_Members.SelectedItem;
 			ID = Convert.ToInt32(dataRowView.Row[0]);
 			name = dataRowView.Row[1].ToString();
@@ -85,7 +85,9 @@ namespace GymApp
 
 		private void btn_Delete_Click(object sender, RoutedEventArgs e)
 		{
+			MySQLCommands.DeleteUserPayments(ID);
 			MySQLCommands.DeleteUser(ID);
+			RefreshMembers();
 		}
 
 		private void tb_Search_TextChanged(object sender, TextChangedEventArgs e)
@@ -93,6 +95,14 @@ namespace GymApp
 			DataView dataView = dataTable.DefaultView;
 			dataView.RowFilter = string.Format("Phone like '%{0}%'", tb_Search.Text);
 			
+		}
+
+		private void btn_ViewPayments_Click(object sender, RoutedEventArgs e)
+		{
+			Payments paymentsWindow = new Payments(ID, name, surname, phone, gender, regDate, cardID);
+			paymentsWindow.Owner = Application.Current.MainWindow;
+			paymentsWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+			paymentsWindow.Show();
 		}
 	}
 }

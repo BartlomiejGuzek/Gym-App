@@ -86,6 +86,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddPayment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditMember.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,6 +104,9 @@
     </Page>
     <Compile Include="AddMember.xaml.cs">
       <DependentUpon>AddMember.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddPayment.xaml.cs">
+      <DependentUpon>AddPayment.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -119,12 +126,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Payments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Members.xaml.cs">
       <DependentUpon>Members.xaml</DependentUpon>
     </Compile>
     <Compile Include="MySQLCommands.cs" />
+    <Compile Include="Payments.xaml.cs">
+      <DependentUpon>Payments.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
