@@ -124,6 +124,14 @@ namespace GymApp
 				return cmd;
 		}
 
+		//Select funcitons
+		static public MySqlCommand GetActiveUsers()
+		{
+			Connect();
+			MySqlCommand cmd = new MySqlCommand("SELECT * FROM activeusers JOIN users ON activeusers.Users_idUsers = users.idUsers", connection);
+			return cmd;
+		}
+
 		static public MySqlCommand GetPayments(int _id)
 		{
 			Connect();
@@ -226,9 +234,21 @@ namespace GymApp
 			}
 		}
 
-		static public void DeleteActiveUsers()
+		static public void DeleteActiveUser(int _id)
 		{
-
+			try
+			{
+				Connect();
+				MySqlCommand cmd = new MySqlCommand("DELETE from activeusers WHERE Users_idUsers = @id", connection);
+				cmd.Parameters.Add("@id", MySqlDbType.VarChar, 12).Value = _id;
+				cmd.ExecuteNonQuery();
+				Close();
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("DeleteActiveUser");
+				Console.WriteLine(e.Message);
+			}
 		}
 
 		//Count functions

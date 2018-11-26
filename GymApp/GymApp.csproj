@@ -82,6 +82,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ActiveMembers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddMember.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,6 +106,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="ActiveMembers.xaml.cs">
+      <DependentUpon>ActiveMembers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddMember.xaml.cs">
       <DependentUpon>AddMember.xaml</DependentUpon>
     </Compile>

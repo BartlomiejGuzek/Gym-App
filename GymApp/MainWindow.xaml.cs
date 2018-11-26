@@ -18,7 +18,9 @@ using MySql.Data;
 
 namespace GymApp
 {
-
+	//TODO: Fix live statistics for members and active members
+	//TODO: Replace payments button with something else
+	//TODO: Add active members window
 	public partial class MainWindow : Window
 	{
 		System.Windows.Threading.DispatcherTimer refreshTimer = new System.Windows.Threading.DispatcherTimer();
@@ -43,6 +45,12 @@ namespace GymApp
 			//lb_FemaleMembers.Content = MySQLCommands.GetFemaleMembersCount();
 			//lb_MaleActiveMembers.Content = MySQLCommands.GetActiveMaleMembersCount();
 			//lb_FemaleActiveMembers.Content = MySQLCommands.GetActiveFemaleMembersCount();
+		}
+
+		private void btn_Members_Copy1_Click(object sender, RoutedEventArgs e)
+		{
+			ActiveMembers activeMembersWindow = new ActiveMembers();
+			activeMembersWindow.Show();
 		}
 	}
 }

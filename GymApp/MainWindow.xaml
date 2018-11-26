@@ -18,7 +18,7 @@
                 <ImageBrush ImageSource="Resources/payments_button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btn_Members_Copy1" Content="&#xA;" HorizontalAlignment="Left" Margin="548,10,0,0" VerticalAlignment="Top" Width="250" Height="250" BorderBrush="{x:Null}">
+        <Button x:Name="btn_Members_Copy1" Content="&#xA;" HorizontalAlignment="Left" Margin="548,10,0,0" VerticalAlignment="Top" Width="250" Height="250" BorderBrush="{x:Null}" Click="btn_Members_Copy1_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/active_members.png"/>
             </Button.Background>

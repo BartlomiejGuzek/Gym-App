@@ -14,9 +14,7 @@ using System.Windows.Shapes;
 
 namespace GymApp
 {
-	/// <summary>
-	/// Interaction logic for EditMember.xaml
-	/// </summary>
+
 	public partial class EditMember : Window
 	{
 		int ID;
@@ -42,6 +40,7 @@ namespace GymApp
 			tb_CardID.Text = _cardID;
 			membersWindow = _membersWindow;
 			cardID = _cardID;
+			dp_RegistrationDate.IsEnabled = false;
 
 			if (_gender == "Male")
 			{
@@ -62,12 +61,11 @@ namespace GymApp
 
 		private void btn_Save_Click(object sender, RoutedEventArgs e)
 		{
-			if (!string.IsNullOrWhiteSpace(tb_Name.Text) && !string.IsNullOrWhiteSpace(tb_Surname.Text) && !string.IsNullOrWhiteSpace(tb_PhoneNumber.Text) && !string.IsNullOrWhiteSpace(tb_CardID.Text) && gender != null && dp_RegistrationDate.SelectedDate != null)
+			if (!string.IsNullOrWhiteSpace(tb_Name.Text) && !string.IsNullOrWhiteSpace(tb_Surname.Text) && !string.IsNullOrWhiteSpace(tb_PhoneNumber.Text) && !string.IsNullOrWhiteSpace(tb_CardID.Text) && gender != null)
 			{
 				name = tb_Name.Text;
 				surname = tb_Surname.Text;
 				phone = tb_PhoneNumber.Text;
-				regDate = dp_RegistrationDate.SelectedDate.Value;
 				MySQLCommands.DropIDTable();
 				MySQLCommands.UpdateUser(ID, name, surname, phone, gender, regDate, cardID);
 				membersWindow.RefreshMembers();

@@ -14,9 +14,7 @@ using System.Windows.Shapes;
 
 namespace GymApp
 {
-    /// <summary>
-    /// Interaction logic for AddMember.xaml
-    /// </summary>
+
     public partial class AddMember : Window
     {
 		string gender;
@@ -25,6 +23,8 @@ namespace GymApp
         public AddMember()
         {
             InitializeComponent();
+			dp_RegistrationDate.BlackoutDates.Add(new CalendarDateRange(new DateTime(1990, 1, 1),
+			DateTime.Now.AddDays(-1)));
 		}
 
 		private void btn_Save_Click(object sender, RoutedEventArgs e)

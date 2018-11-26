@@ -16,9 +16,7 @@ using MySql.Data.MySqlClient;
 
 namespace GymApp
 {
-    /// <summary>
-    /// Interaction logic for Payments.xaml
-    /// </summary>
+    //TODO: Add logic behind checking if the payment is valid for current month
     public partial class Payments : Window
     {
 		int ID;

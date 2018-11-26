@@ -11,8 +11,8 @@ using System.Windows.Controls;
 
 namespace GymApp
 {
-	//TODO: Fix member list not refreshing after delete
-	public partial class Members : Window
+	//TODO: Fix member list not refreshing after delete (maybe cant refresh with null?)
+	public partial class ActiveMembers : Window
 	{
 		DataTable dataTable = new DataTable();
 		System.Windows.Threading.DispatcherTimer refreshTimer = new System.Windows.Threading.DispatcherTimer();
@@ -25,7 +25,7 @@ namespace GymApp
 		DateTime regDate;
 		string cardID;
 
-		public Members()
+		public ActiveMembers()
 		{
 			InitializeComponent();
 			refreshTimer.Tick += refreshTimer_Tick;
@@ -42,8 +42,9 @@ namespace GymApp
 		public void RefreshMembers()
 		{
 			Console.WriteLine("refreshed");
-			dataTable.Load(MySQLCommands.GetUsers().ExecuteReader());
+			dataTable.Load(MySQLCommands.GetActiveUsers().ExecuteReader());
 			dg_Members.DataContext = dataTable;
+			//dg_Members.Items.Refresh();
 		}
 
 		private void btn_Cancel_Click(object sender, RoutedEventArgs e)
@@ -51,27 +52,10 @@ namespace GymApp
 			this.Close();
 		}
 
-		private void btn_Add_Click(object sender, RoutedEventArgs e)
-		{
-			AddMember addMemberWindow = new AddMember();
-			addMemberWindow.Owner = Application.Current.MainWindow;
-			addMemberWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-			addMemberWindow.Show();
-		}
-
-		private void btn_Edit_Click(object sender, RoutedEventArgs e)
-		{
-			EditMember editMemerWindow = new EditMember(ID, name, surname, phone, gender, regDate, cardID, this);
-			editMemerWindow.Owner = Application.Current.MainWindow;
-			editMemerWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-			editMemerWindow.Show();
-		}
-
 		private void dg_Members_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			btn_Edit.IsEnabled = true;
-			btn_Delete.IsEnabled = true;
-			btn_ViewPayments.IsEnabled = true;
+
+			btn_Logout.IsEnabled = true;
 			DataRowView dataRowView = (DataRowView)dg_Members.SelectedItem;
 			ID = Convert.ToInt32(dataRowView.Row[0]);
 			name = dataRowView.Row[1].ToString();
@@ -83,26 +67,16 @@ namespace GymApp
 			Console.WriteLine(ID);
 		}
 
-		private void btn_Delete_Click(object sender, RoutedEventArgs e)
-		{
-			MySQLCommands.DeleteUserPayments(ID);
-			MySQLCommands.DeleteUser(ID);
-			RefreshMembers();
-		}
-
 		private void tb_Search_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			DataView dataView = dataTable.DefaultView;
 			dataView.RowFilter = string.Format("Phone like '%{0}%'", tb_Search.Text);
-			
 		}
 
-		private void btn_ViewPayments_Click(object sender, RoutedEventArgs e)
+		private void btn_Logout_Click(object sender, RoutedEventArgs e)
 		{
-			Payments paymentsWindow = new Payments(ID, name, surname, phone, gender, regDate, cardID);
-			paymentsWindow.Owner = Application.Current.MainWindow;
-			paymentsWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-			paymentsWindow.Show();
+			MySQLCommands.DeleteActiveUser(ID);
 		}
 	}
 }
+
