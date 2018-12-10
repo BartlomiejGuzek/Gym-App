@@ -47,6 +47,7 @@ namespace GymApp
 			{
 				Console.WriteLine("EnterGetCardIdMode");
 				Console.WriteLine(e.Message);
+				MessageBox.Show(e.Message, "EnterGetCardIdMode", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
@@ -63,6 +64,7 @@ namespace GymApp
 			{
 				Console.WriteLine("ExitGetCardIdMode");
 				Console.WriteLine(e.Message);
+				MessageBox.Show(e.Message, "ExitGetCardIdMode", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
@@ -96,6 +98,7 @@ namespace GymApp
 			{
 				Console.WriteLine("GetCardID");
 				Console.WriteLine(e.Message);
+				MessageBox.Show(e.Message, "GetCardID", MessageBoxButton.OK, MessageBoxImage.Error);
 				return null;
 			}
 		}
@@ -113,6 +116,7 @@ namespace GymApp
 			{
 				Console.WriteLine("DropIDTable");
 				Console.WriteLine(e.Message);
+				MessageBox.Show(e.Message, "DropIDTable", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
@@ -124,12 +128,25 @@ namespace GymApp
 				return cmd;
 		}
 
-		//Select funcitons
+		static public MySqlDataAdapter TestGetUsers()
+		{
+			Connect();
+			MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM users", connection);
+			return adapter;
+		}
+
 		static public MySqlCommand GetActiveUsers()
 		{
 			Connect();
 			MySqlCommand cmd = new MySqlCommand("SELECT * FROM activeusers JOIN users ON activeusers.Users_idUsers = users.idUsers", connection);
 			return cmd;
+		}
+
+		static public MySqlDataAdapter TestGetActiveUsers()
+		{
+			Connect();
+			MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM activeusers JOIN users ON activeusers.Users_idUsers = users.idUsers", connection);
+			return adapter;
 		}
 
 		static public MySqlCommand GetPayments(int _id)
@@ -138,6 +155,37 @@ namespace GymApp
 			MySqlCommand cmd = new MySqlCommand("SELECT * FROM payments WHERE Users_idUsers = @id", connection);
 			cmd.Parameters.Add("@id", MySqlDbType.VarChar, 12).Value = _id;
 			return cmd;
+		}
+
+		static public string GetNewestPayment(int _id)
+		{
+			try
+			{
+				Connect();
+				MySqlCommand cmd = new MySqlCommand("SELECT MAX(Expires) FROM payments WHERE Users_idUsers = @id", connection);
+				cmd.CommandType = System.Data.CommandType.Text;
+				cmd.Parameters.Add("@id", MySqlDbType.VarChar, 12).Value = _id;
+				MySqlDataReader reader = cmd.ExecuteReader();
+				if (reader.HasRows)
+				{
+					while (reader.Read())
+					{
+						var date = reader.GetString(0);
+						return date;
+					}
+				}
+				reader.Close();
+				Close();
+				return "0";
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("GetNewestPayment");
+				Console.WriteLine(e.Message);
+				MessageBox.Show("No payments!", "GetNewestPayment", MessageBoxButton.OK, MessageBoxImage.Error);
+				return null;
+			}
+
 		}
 
 		//Insert functions
@@ -161,17 +209,27 @@ namespace GymApp
 			{
 				Console.WriteLine("InsertUsers");
 				Console.WriteLine(e.Message);
+				MessageBox.Show("User with this Card ID already exists", "InsertUsers", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
-		static public void InsertPayments()
+		static public void InsertPayment(DateTime _expires, int _id)
 		{
-
-		}
-
-		static public void InsertActiveUsers()
-		{
-
+			try
+			{
+				Connect();
+				MySqlCommand cmd = new MySqlCommand("INSERT INTO Payments (Expires, Users_idUsers) VALUES(@expires, @Users_idUsers)", connection);
+				cmd.Parameters.Add("@expires", MySqlDbType.Date).Value = _expires;
+				cmd.Parameters.Add("@Users_idUsers", MySqlDbType.VarChar, 45).Value = _id;
+				cmd.ExecuteNonQuery();
+				Close();
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("InsertPayment");
+				Console.WriteLine(e.Message);
+				MessageBox.Show(e.Message, "InsertPayment", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
 
 		//Update functions
@@ -196,6 +254,7 @@ namespace GymApp
 			{
 				Console.WriteLine("UpdateUser");
 				Console.WriteLine(e.Message);
+				MessageBox.Show(e.Message, "UpdateUser", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
@@ -214,6 +273,7 @@ namespace GymApp
 			{
 				Console.WriteLine("DeleteUser");
 				Console.WriteLine(e.Message);
+				MessageBox.Show(e.Message, "DeleteUser", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
@@ -231,6 +291,7 @@ namespace GymApp
 			{
 				Console.WriteLine("DeleteUserPayments");
 				Console.WriteLine(e.Message);
+				MessageBox.Show(e.Message, "DeleteUserPayments", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
@@ -248,6 +309,7 @@ namespace GymApp
 			{
 				Console.WriteLine("DeleteActiveUser");
 				Console.WriteLine(e.Message);
+				MessageBox.Show(e.Message, "DeleteActiveUser", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 

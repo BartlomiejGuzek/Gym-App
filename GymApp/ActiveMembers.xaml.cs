@@ -15,6 +15,8 @@ namespace GymApp
 	public partial class ActiveMembers : Window
 	{
 		DataTable dataTable = new DataTable();
+		MySqlDataAdapter adapter;
+		DataSet dataSet;
 		System.Windows.Threading.DispatcherTimer refreshTimer = new System.Windows.Threading.DispatcherTimer();
 		int count;
 		int ID;
@@ -45,6 +47,10 @@ namespace GymApp
 			dataTable.Load(MySQLCommands.GetActiveUsers().ExecuteReader());
 			dg_Members.DataContext = dataTable;
 			//dg_Members.Items.Refresh();
+			/*adapter = MySQLCommands.TestGetActiveUsers();
+			dataSet = new DataSet();
+			adapter.Fill(dataSet, "Users");
+			dg_Members.ItemsSource = dataSet.Tables["Users"].DefaultView;*/
 		}
 
 		private void btn_Cancel_Click(object sender, RoutedEventArgs e)

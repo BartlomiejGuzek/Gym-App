@@ -12,13 +12,13 @@
         <Grid HorizontalAlignment="Left" Height="281" Margin="10,10,0,0" VerticalAlignment="Top" Width="234"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="10,10,0,0" VerticalAlignment="Top" Width="234"/>
         <Label x:Name="label" Content="Personal data" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Height="35" Width="234" Foreground="White" FontSize="18"/>
-        <TextBox x:Name="tb_Name" HorizontalAlignment="Left" Height="23" Margin="17,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="White" Background="#FF636370" BorderBrush="{x:Null}"/>
+        <TextBox x:Name="tb_Name" HorizontalAlignment="Left" Height="23" Margin="17,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="White" Background="#FF636370" BorderBrush="{x:Null}" VerticalContentAlignment="Center"/>
         <Label x:Name="label1" Content="Name" HorizontalAlignment="Left" Margin="13,52,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Rectangle x:Name="rec" Fill="#FF464651" HorizontalAlignment="Left" Height="56" Margin="10,113,0,0" VerticalAlignment="Top" Width="234"/>
-        <TextBox x:Name="tb_Surname" HorizontalAlignment="Left" Height="23" Margin="17,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="White" Background="#FF636370" BorderBrush="{x:Null}"/>
+        <TextBox x:Name="tb_Surname" HorizontalAlignment="Left" Height="23" Margin="17,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="White" Background="#FF636370" BorderBrush="{x:Null}" VerticalContentAlignment="Center"/>
         <Label x:Name="label_Copy" Content="Surname" HorizontalAlignment="Left" Margin="13,113,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Rectangle Fill="#FF464651" HorizontalAlignment="Left" Height="56" Margin="10,174,0,0" VerticalAlignment="Top" Width="234"/>
-        <TextBox x:Name="tb_PhoneNumber" HorizontalAlignment="Left" Height="23" Margin="17,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="White" Background="#FF636370" BorderBrush="{x:Null}"/>
+        <TextBox x:Name="tb_PhoneNumber" HorizontalAlignment="Left" Height="23" Margin="17,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Foreground="White" Background="#FF636370" BorderBrush="{x:Null}" VerticalContentAlignment="Center"/>
         <Label x:Name="label_Copy1" Content="Phone number" HorizontalAlignment="Left" Margin="13,174,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Rectangle Fill="#FF464651" HorizontalAlignment="Left" Height="56" Margin="10,235,0,0" VerticalAlignment="Top" Width="234"/>
         <Label x:Name="label_Copy2" Content="Gender" HorizontalAlignment="Left" Margin="13,235,0,0" VerticalAlignment="Top" Foreground="White"/>
@@ -33,7 +33,7 @@
         <DatePicker x:Name="dp_RegistrationDate" HorizontalAlignment="Left" Margin="255,78,0,0" VerticalAlignment="Top" Width="221" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF333333"/>
         <Rectangle Fill="#FF464651" HorizontalAlignment="Left" Height="56" Margin="249,113,0,0" VerticalAlignment="Top" Width="234"/>
         <Label x:Name="label1_Copy1" Content="Card ID" HorizontalAlignment="Left" Margin="249,113,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <TextBox x:Name="tb_CardID" HorizontalAlignment="Left" Height="23" Margin="255,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" Foreground="White" Background="#FF636370" BorderBrush="{x:Null}" IsEnabled="False"/>
+        <TextBox x:Name="tb_CardID" HorizontalAlignment="Left" Height="23" Margin="255,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" Foreground="White" Background="#FF636370" BorderBrush="{x:Null}" IsEnabled="False" VerticalContentAlignment="Center"/>
         <Button x:Name="btn_GetID" Content="Get ID" HorizontalAlignment="Left" Margin="401,139,0,0" VerticalAlignment="Top" Width="75" Height="23" Background="#FFE6B23E" BorderBrush="{x:Null}" Foreground="#FF33333D" Click="btn_GetID_Click" FontWeight="Bold"/>
         <RadioButton x:Name="rb_Male" Content="Male" HorizontalAlignment="Left" Margin="17,266,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Checked="rb_Male_Checked"/>
         <RadioButton x:Name="rb_Female" Content="Female" HorizontalAlignment="Left" Margin="178,266,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Checked="rb_Female_Checked"/>

@@ -14,6 +14,7 @@ namespace GymApp
 	//TODO: Fix member list not refreshing after delete
 	public partial class Members : Window
 	{
+
 		DataTable dataTable = new DataTable();
 		System.Windows.Threading.DispatcherTimer refreshTimer = new System.Windows.Threading.DispatcherTimer();
 		int count;
@@ -85,8 +86,12 @@ namespace GymApp
 
 		private void btn_Delete_Click(object sender, RoutedEventArgs e)
 		{
-			MySQLCommands.DeleteUserPayments(ID);
-			MySQLCommands.DeleteUser(ID);
+			MessageBoxResult result = MessageBox.Show("Are you sure?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+			if (result == MessageBoxResult.Yes)
+			{
+				MySQLCommands.DeleteUserPayments(ID);
+				MySQLCommands.DeleteUser(ID);
+			}
 			RefreshMembers();
 		}
 
@@ -94,7 +99,6 @@ namespace GymApp
 		{
 			DataView dataView = dataTable.DefaultView;
 			dataView.RowFilter = string.Format("Phone like '%{0}%'", tb_Search.Text);
-			
 		}
 
 		private void btn_ViewPayments_Click(object sender, RoutedEventArgs e)

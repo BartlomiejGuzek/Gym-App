@@ -17,13 +17,25 @@ namespace GymApp
     /// <summary>
     /// Interaction logic for AddPayment.xaml
     /// </summary>
+	/// 
     public partial class AddPayment : Window
     {
 		Payments paymentWindow;
-		public AddPayment(Payments _paymenWindow)
+		DateTime expires;
+		int id;
+		public AddPayment(Payments _paymenWindow, DateTime _expires, int _id)
         {
             InitializeComponent();
 			paymentWindow = _paymenWindow;
+			expires = _expires;
+			id = _id;
 		}
-    }
+
+		private void btn_Save_Click(object sender, RoutedEventArgs e)
+		{
+			MySQLCommands.InsertPayment(expires, id);
+			paymentWindow.RefreshPaymentList();
+			this.Close();
+		}
+	}
 }

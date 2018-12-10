@@ -19,8 +19,6 @@ using MySql.Data;
 namespace GymApp
 {
 	//TODO: Fix live statistics for members and active members
-	//TODO: Replace payments button with something else
-	//TODO: Add active members window
 	public partial class MainWindow : Window
 	{
 		System.Windows.Threading.DispatcherTimer refreshTimer = new System.Windows.Threading.DispatcherTimer();

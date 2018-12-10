@@ -13,22 +13,15 @@
                 <ImageBrush ImageSource="Resources/member_button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btn_Members_Copy" Content="&#xA;" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" Width="250" Height="250" BorderBrush="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/payments_button.png"/>
-            </Button.Background>
-        </Button>
         <Button x:Name="btn_Members_Copy1" Content="&#xA;" HorizontalAlignment="Left" Margin="548,10,0,0" VerticalAlignment="Top" Width="250" Height="250" BorderBrush="{x:Null}" Click="btn_Members_Copy1_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/active_members.png"/>
             </Button.Background>
         </Button>
         <Label x:Name="label" Content="Members" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top" Width="250" Height="70" FontSize="36" FontWeight="Bold" Foreground="#FF33333D" HorizontalContentAlignment="Center"/>
-        <Label x:Name="label1" Content="Payments" HorizontalAlignment="Left" Margin="280,190,0,0" VerticalAlignment="Top" Width="250" Height="70" HorizontalContentAlignment="Center" FontSize="36" FontWeight="Bold" Foreground="#FF33333D"/>
         <Label x:Name="label2" Content="Active users" HorizontalAlignment="Left" Margin="548,190,0,0" VerticalAlignment="Top" Height="70" Width="250" FontWeight="Bold" FontSize="36" Foreground="#FF33333D" HorizontalContentAlignment="Center"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="125" Margin="10,278,0,0" VerticalAlignment="Top" Width="250" Source="Resources/bannerRed.png"/>
         <Label x:Name="lb_FemaleMembers" Content="0" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top" Height="56" Width="115" FontSize="36" Foreground="#FF33333D" HorizontalContentAlignment="Center" FontWeight="Bold"/>
-        <Image x:Name="image_Copy" HorizontalAlignment="Left" Height="125" Margin="280,278,0,0" VerticalAlignment="Top" Width="250" Source="Resources/bannerYellow.png"/>
         <Image x:Name="image_Copy1" HorizontalAlignment="Left" Height="125" Margin="548,278,0,0" VerticalAlignment="Top" Width="250" Source="Resources/bannerGreen.png"/>
         <Label x:Name="label4" Content="♂" HorizontalAlignment="Left" Margin="39,274,0,0" VerticalAlignment="Top" Height="75" Width="70" Foreground="#FF33333D" FontWeight="Bold" FontSize="48"/>
         <Label x:Name="lb_MaleMembers" Content="0" HorizontalAlignment="Left" Margin="132,331,0,0" VerticalAlignment="Top" Height="56" Width="126" FontWeight="Bold" FontSize="36" Foreground="#FF33333D" HorizontalContentAlignment="Center"/>
@@ -37,5 +30,7 @@
         <Label x:Name="label4_Copy1" Content="♂" HorizontalAlignment="Left" Margin="579,278,0,0" VerticalAlignment="Top" Height="75" Width="70" Foreground="#FF33333D" FontWeight="Bold" FontSize="48"/>
         <Label x:Name="lb_MaleActiveMembers" Content="0" HorizontalAlignment="Left" Margin="672,335,0,0" VerticalAlignment="Top" Height="56" Width="126" FontWeight="Bold" FontSize="36" Foreground="#FF33333D" HorizontalContentAlignment="Center"/>
         <Label x:Name="label4_Copy2" Content="♀" HorizontalAlignment="Left" Margin="706,278,0,0" VerticalAlignment="Top" Height="75" Width="70" Foreground="#FF33333D" FontWeight="Bold" FontSize="48"/>
+        <Image x:Name="image1" HorizontalAlignment="Left" Height="301" Margin="265,10,0,0" VerticalAlignment="Top" Width="278" Source="Resources/logo.png"/>
+        <Label x:Name="label1" Content="UTP Gym" HorizontalAlignment="Left" Margin="265,278,0,0" VerticalAlignment="Top" Foreground="#FF31BD95" FontWeight="Bold" FontSize="48" Height="125" Width="278" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Calibri"/>
     </Grid>
 </Window>
