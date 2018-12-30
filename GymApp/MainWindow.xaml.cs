@@ -18,7 +18,7 @@ using MySql.Data;
 
 namespace GymApp
 {
-	//TODO: Fix live statistics for members and active members
+	//TODO: Fix crashing after 48 refreshes of statistics
 	public partial class MainWindow : Window
 	{
 		System.Windows.Threading.DispatcherTimer refreshTimer = new System.Windows.Threading.DispatcherTimer();
@@ -50,6 +50,8 @@ namespace GymApp
 			ActiveMembers activeMembersWindow = new ActiveMembers();
 			activeMembersWindow.Show();
 		}
+
+
 	}
 }
 

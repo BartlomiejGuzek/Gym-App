@@ -11,7 +11,6 @@ using System.Windows.Controls;
 
 namespace GymApp
 {
-	//TODO: Fix member list not refreshing after delete (maybe cant refresh with null?)
 	public partial class ActiveMembers : Window
 	{
 		DataTable dataTable = new DataTable();
@@ -34,6 +33,7 @@ namespace GymApp
 			refreshTimer.Interval = new TimeSpan(0, 0, 1);
 			refreshTimer.Start();
 			RefreshMembers();
+
 		}
 
 		private void refreshTimer_Tick(object sender, EventArgs e)
@@ -43,14 +43,13 @@ namespace GymApp
 
 		public void RefreshMembers()
 		{
-			Console.WriteLine("refreshed");
-			dataTable.Load(MySQLCommands.GetActiveUsers().ExecuteReader());
-			dg_Members.DataContext = dataTable;
+			//dataTable.Load(MySQLCommands.GetActiveUsers().ExecuteReader());
+			//dg_Members.DataContext = dataTable;
 			//dg_Members.Items.Refresh();
-			/*adapter = MySQLCommands.TestGetActiveUsers();
+			adapter = MySQLCommands.TestGetActiveUsers();
 			dataSet = new DataSet();
 			adapter.Fill(dataSet, "Users");
-			dg_Members.ItemsSource = dataSet.Tables["Users"].DefaultView;*/
+			dg_Members.ItemsSource = dataSet.Tables["Users"].DefaultView;
 		}
 
 		private void btn_Cancel_Click(object sender, RoutedEventArgs e)
@@ -63,18 +62,27 @@ namespace GymApp
 
 			btn_Logout.IsEnabled = true;
 			DataRowView dataRowView = (DataRowView)dg_Members.SelectedItem;
-			ID = Convert.ToInt32(dataRowView.Row[0]);
-			name = dataRowView.Row[1].ToString();
-			surname = dataRowView.Row[2].ToString();
-			phone = dataRowView.Row[3].ToString();
-			gender = dataRowView.Row[4].ToString();
-			regDate = dataRowView.Row.Field<DateTime>("RegistrationDate");
-			cardID = dataRowView.Row[6].ToString();
+			try
+			{
+				ID = Convert.ToInt32(dataRowView.Row[0]);
+				name = dataRowView.Row[1].ToString();
+				surname = dataRowView.Row[2].ToString();
+				phone = dataRowView.Row[3].ToString();
+				gender = dataRowView.Row[4].ToString();
+				regDate = dataRowView.Row.Field<DateTime>("RegistrationDate");
+				cardID = dataRowView.Row[6].ToString();
+			}
+			catch(Exception exc)
+			{
+				Console.WriteLine(exc.Message);
+			}
+			
 			Console.WriteLine(ID);
 		}
 
 		private void tb_Search_TextChanged(object sender, TextChangedEventArgs e)
 		{
+			//TODO: Fix filtering
 			DataView dataView = dataTable.DefaultView;
 			dataView.RowFilter = string.Format("Phone like '%{0}%'", tb_Search.Text);
 		}

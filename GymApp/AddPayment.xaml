@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GymApp"
         mc:Ignorable="d"
-        Title="AddPayment" Height="299.176" Width="567.583" Background="#FF33333D">
+        Title="AddPayment" Height="299.176" Width="567.583" Background="#FF33333D" ResizeMode="NoResize">
     <Grid>
         <Button x:Name="btn_Save" Content="OK" HorizontalAlignment="Left" Margin="229,223,0,0" VerticalAlignment="Top" Width="107" Height="35" BorderBrush="{x:Null}" Background="#FF31BD95" FontSize="20" Foreground="#FF33333D" Click="btn_Save_Click" FontWeight="Bold"/>
         <Label x:Name="label" Content="       Payment was renewed for another 30 days!" Margin="10,117,10,69" VerticalAlignment="Center" Foreground="White" FontSize="24" Width="540" HorizontalAlignment="Center" Height="82"/>

@@ -373,7 +373,7 @@ namespace GymApp
 			try
 			{
 				Connect();
-				MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM activeusers WHERE Users_idUsers", connection);
+				MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM users JOIN activeusers ON activeusers.Users_idUsers = users.idUsers WHERE users.Gender <> 'Male'", connection);
 				MySqlDataReader reader = cmd.ExecuteReader();
 				if (reader.HasRows)
 				{
@@ -400,7 +400,7 @@ namespace GymApp
 			try
 			{
 				Connect();
-				MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM activeusers WHERE Gender = 'Female'", connection);
+				MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM users JOIN activeusers ON activeusers.Users_idUsers = users.idUsers WHERE users.Gender <> 'Female'", connection);
 				MySqlDataReader reader = cmd.ExecuteReader();
 				if (reader.HasRows)
 				{

@@ -11,7 +11,6 @@ using System.Windows.Controls;
 
 namespace GymApp
 {
-	//TODO: Fix member list not refreshing after delete
 	public partial class Members : Window
 	{
 
@@ -42,7 +41,6 @@ namespace GymApp
 
 		public void RefreshMembers()
 		{
-			Console.WriteLine("refreshed");
 			dataTable.Load(MySQLCommands.GetUsers().ExecuteReader());
 			dg_Members.DataContext = dataTable;
 		}
@@ -73,14 +71,22 @@ namespace GymApp
 			btn_Edit.IsEnabled = true;
 			btn_Delete.IsEnabled = true;
 			btn_ViewPayments.IsEnabled = true;
-			DataRowView dataRowView = (DataRowView)dg_Members.SelectedItem;
-			ID = Convert.ToInt32(dataRowView.Row[0]);
-			name = dataRowView.Row[1].ToString();
-			surname = dataRowView.Row[2].ToString();
-			phone = dataRowView.Row[3].ToString();
-			gender = dataRowView.Row[4].ToString();
-			regDate = dataRowView.Row.Field<DateTime>("RegistrationDate");
-			cardID = dataRowView.Row[6].ToString();
+			try
+			{
+				DataRowView dataRowView = (DataRowView)dg_Members.SelectedItem;
+				ID = Convert.ToInt32(dataRowView.Row[0]);
+				name = dataRowView.Row[1].ToString();
+				surname = dataRowView.Row[2].ToString();
+				phone = dataRowView.Row[3].ToString();
+				gender = dataRowView.Row[4].ToString();
+				regDate = dataRowView.Row.Field<DateTime>("RegistrationDate");
+				cardID = dataRowView.Row[6].ToString();
+			}
+			catch (Exception exc)
+			{
+				Console.WriteLine(exc.Message);
+			}
+			
 			Console.WriteLine(ID);
 		}
 
@@ -91,6 +97,18 @@ namespace GymApp
 			{
 				MySQLCommands.DeleteUserPayments(ID);
 				MySQLCommands.DeleteUser(ID);
+				DataRowView dataRowView = (DataRowView)dg_Members.SelectedItem;
+				dataRowView.Delete();
+				btn_Edit.IsEnabled = false;
+				btn_Delete.IsEnabled = false;
+				btn_ViewPayments.IsEnabled = false;
+				ID = 0;
+				name = null;
+				surname = null;
+				phone = null;
+				gender = null;
+				regDate = DateTime.Today;
+				cardID = null;
 			}
 			RefreshMembers();
 		}

@@ -16,6 +16,8 @@ using MySql.Data.MySqlClient;
 
 namespace GymApp
 {
+	//TODO: Add option to pay for multiple months
+	//TODO: Add logic for checking if user paid for multiple months
     public partial class Payments : Window
     {
 		int ID;

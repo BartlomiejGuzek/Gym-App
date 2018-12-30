@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GymApp"
         mc:Ignorable="d"
-        Title="Members" Height="461" Width="852" Background="#FF33333D">
+        Title="Members" Height="461" Width="852" Background="#FF33333D" ResizeMode="NoResize">
 
     <Grid>
         <Rectangle Fill="#FF464651" HorizontalAlignment="Left" Height="35" Margin="7,16,0,0" VerticalAlignment="Top" Width="288"/>
