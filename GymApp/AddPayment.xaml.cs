@@ -21,20 +21,24 @@ namespace GymApp
     public partial class AddPayment : Window
     {
 		Payments paymentWindow;
-		DateTime expires;
+		DateTime issuedDate;
 		int id;
-		public AddPayment(Payments _paymenWindow, DateTime _expires, int _id)
+		DateTime expDate;
+
+		public AddPayment(Payments _paymenWindow, DateTime _issuedDate, int _id, DateTime _expDate)
         {
             InitializeComponent();
 			paymentWindow = _paymenWindow;
-			expires = _expires;
+			issuedDate = _issuedDate;
 			id = _id;
+			expDate = _expDate;
 		}
 
 		private void btn_Save_Click(object sender, RoutedEventArgs e)
 		{
-			MySQLCommands.InsertPayment(expires, id);
+			MySQLCommands.InsertPayment(issuedDate, id, expDate);
 			paymentWindow.RefreshPaymentList();
+			paymentWindow.CheckStatus();
 			this.Close();
 		}
 	}

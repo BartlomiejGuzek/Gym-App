@@ -162,7 +162,7 @@ namespace GymApp
 			try
 			{
 				Connect();
-				MySqlCommand cmd = new MySqlCommand("SELECT MAX(Expires) FROM payments WHERE Users_idUsers = @id", connection);
+				MySqlCommand cmd = new MySqlCommand("SELECT MAX(ExpDate) FROM payments WHERE Users_idUsers = @id", connection);
 				cmd.CommandType = System.Data.CommandType.Text;
 				cmd.Parameters.Add("@id", MySqlDbType.VarChar, 12).Value = _id;
 				MySqlDataReader reader = cmd.ExecuteReader();
@@ -213,14 +213,15 @@ namespace GymApp
 			}
 		}
 
-		static public void InsertPayment(DateTime _expires, int _id)
+		static public void InsertPayment(DateTime _issueDate, int _id, DateTime _expDate)
 		{
 			try
 			{
 				Connect();
-				MySqlCommand cmd = new MySqlCommand("INSERT INTO Payments (Expires, Users_idUsers) VALUES(@expires, @Users_idUsers)", connection);
-				cmd.Parameters.Add("@expires", MySqlDbType.Date).Value = _expires;
+				MySqlCommand cmd = new MySqlCommand("INSERT INTO Payments (IssueDate, Users_idUsers, ExpDate) VALUES(@issueDate, @Users_idUsers, @expDate)", connection);
+				cmd.Parameters.Add("@issueDate", MySqlDbType.Date).Value = _issueDate;
 				cmd.Parameters.Add("@Users_idUsers", MySqlDbType.VarChar, 45).Value = _id;
+				cmd.Parameters.Add("@expDate", MySqlDbType.Date).Value = _expDate;
 				cmd.ExecuteNonQuery();
 				Close();
 			}

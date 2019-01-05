@@ -39,6 +39,12 @@ namespace GymApp
 			RefreshMembers();
 		}
 
+		private void OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+		{
+			if (e.PropertyType == typeof(System.DateTime))
+				(e.Column as DataGridTextColumn).Binding.StringFormat = "dd-MM-yyyy hh:mm";
+		}
+
 		public void RefreshMembers()
 		{
 			dataTable.Load(MySQLCommands.GetUsers().ExecuteReader());
@@ -122,7 +128,7 @@ namespace GymApp
 		private void btn_ViewPayments_Click(object sender, RoutedEventArgs e)
 		{
 			Payments paymentsWindow = new Payments(ID, name, surname, phone, gender, regDate, cardID);
-			paymentsWindow.Owner = Application.Current.MainWindow;
+			//paymentsWindow.Owner = Application.Current.MainWindow;
 			paymentsWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 			paymentsWindow.Show();
 		}

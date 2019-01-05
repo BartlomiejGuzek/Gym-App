@@ -27,7 +27,7 @@ namespace GymApp
 		{
 			InitializeComponent();
 			refreshTimer.Tick += refreshTimer_Tick;
-			refreshTimer.Interval = new TimeSpan(0, 0, 1);
+			refreshTimer.Interval = new TimeSpan(0, 0, 5);
 			refreshTimer.Start();
 		}
 
@@ -39,10 +39,10 @@ namespace GymApp
 
 		private void refreshTimer_Tick(object sender, EventArgs e)
 		{
-			//lb_MaleMembers.Content = MySQLCommands.GetMaleMembersCount();
-			//lb_FemaleMembers.Content = MySQLCommands.GetFemaleMembersCount();
-			//lb_MaleActiveMembers.Content = MySQLCommands.GetActiveMaleMembersCount();
-			//lb_FemaleActiveMembers.Content = MySQLCommands.GetActiveFemaleMembersCount();
+			lb_MaleMembers.Content = MySQLCommands.GetMaleMembersCount();
+			lb_FemaleMembers.Content = MySQLCommands.GetFemaleMembersCount();
+		    lb_MaleActiveMembers.Content = MySQLCommands.GetActiveMaleMembersCount();
+			lb_FemaleActiveMembers.Content = MySQLCommands.GetActiveFemaleMembersCount();
 		}
 
 		private void btn_Members_Copy1_Click(object sender, RoutedEventArgs e)

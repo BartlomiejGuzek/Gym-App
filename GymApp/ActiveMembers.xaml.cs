@@ -83,8 +83,9 @@ namespace GymApp
 		private void tb_Search_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			//TODO: Fix filtering
-			DataView dataView = dataTable.DefaultView;
-			dataView.RowFilter = string.Format("Phone like '%{0}%'", tb_Search.Text);
+			//DataView dataView = dataTable.DefaultView;
+			//dataView.RowFilter = string.Format("Phone like '%{0}%'", tb_Search.Text);
+			//(dg_Members.ItemsSource as DataTable).DefaultView.RowFilter = tb_Search.Text;
 		}
 
 		private void btn_Logout_Click(object sender, RoutedEventArgs e)

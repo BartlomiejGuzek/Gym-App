@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GymApp"
         mc:Ignorable="d"
-        Title="ActiveMembers" Height="459.89" Width="846.978" Background="#FF33333D" ResizeMode="NoResize">
+        Title="ActiveMembers" Height="459.89" Width="884.978" Background="#FF33333D" ResizeMode="NoResize">
     <Grid>
+        <DataGrid x:Name="dg_Members" HorizontalAlignment="Left" Height="318" Margin="287,25,0,0" VerticalAlignment="Top" Width="582" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFF6F7F9" ItemsSource="{Binding}" HorizontalGridLinesBrush="#FF33333D" VerticalGridLinesBrush="#FF33333D" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" RowBackground="#FF464651" ColumnHeaderHeight="30" RowHeaderWidth="17" SelectionChanged="dg_Members_SelectionChanged" SelectionMode="Single" CanUserResizeColumns="False" GridLinesVisibility="Horizontal" IsReadOnly="True"/>
         <Rectangle Fill="#FF464651" HorizontalAlignment="Left" Height="35" Margin="7,16,0,0" VerticalAlignment="Top" Width="288"/>
-        <DataGrid x:Name="dg_Members" HorizontalAlignment="Left" Height="318" Margin="305,56,-27,0" VerticalAlignment="Top" Width="514" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFF6F7F9" ItemsSource="{Binding}" HorizontalGridLinesBrush="#FF33333D" VerticalGridLinesBrush="#FF33333D" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" RowBackground="#FF464651" ColumnHeaderHeight="30" RowHeaderWidth="17" SelectionChanged="dg_Members_SelectionChanged" SelectionMode="Single" CanUserResizeColumns="False" GridLinesVisibility="Horizontal" IsReadOnly="True"/>
-        <Button x:Name="btn_Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="702,374,-17,0" VerticalAlignment="Top" Width="107" Height="35" Background="#FFFF4141" Foreground="#FF33333D" BorderBrush="{x:Null}" FontSize="20" Click="btn_Cancel_Click" FontWeight="Bold"/>
-        <Rectangle Fill="#FF464651" HorizontalAlignment="Left" Height="35" Margin="305,16,-27,0" VerticalAlignment="Top" Width="514"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="305,14,-27,0" VerticalAlignment="Top" Width="514"/>
+        <Button x:Name="btn_Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="746,370,0,0" VerticalAlignment="Top" Width="106" Height="36" Background="#FFFF4141" Foreground="#FF33333D" BorderBrush="{x:Null}" FontSize="20" Click="btn_Cancel_Click" FontWeight="Bold"/>
+        <Rectangle Fill="#FF464651" HorizontalAlignment="Left" Height="35" Margin="306,16,0,0" VerticalAlignment="Top" Width="563"/>
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="306,14,0,0" VerticalAlignment="Top" Width="563"/>
         <Label x:Name="label" Content="Active members" HorizontalAlignment="Left" Margin="306,16,0,0" VerticalAlignment="Top" Height="35" Width="177" Foreground="White" FontSize="18"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="7,14,0,0" VerticalAlignment="Top" Width="288"/>
         <Label x:Name="label_Copy" Content="Options" HorizontalAlignment="Left" Margin="8,16,0,0" VerticalAlignment="Top" Height="35" Width="169" Foreground="White" FontSize="18"/>
@@ -19,6 +19,8 @@
         <TextBox x:Name="tb_Search" HorizontalAlignment="Left" Height="23" Margin="15,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" Foreground="White" Background="#FF636370" BorderBrush="{x:Null}" TextChanged="tb_Search_TextChanged"/>
         <Label x:Name="label1" Content="Search by phone number" HorizontalAlignment="Left" Margin="11,56,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Button x:Name="btn_Logout" Content="Logout" HorizontalAlignment="Left" Margin="15,114,0,0" VerticalAlignment="Top" Width="273" Height="34" Background="#FFE6B23E" Foreground="#FF33333D" BorderBrush="{x:Null}" FontSize="20" Click="btn_Logout_Click" IsEnabled="False" FontWeight="Bold"/>
+        <Rectangle Fill="#FF33333D" HorizontalAlignment="Left" Height="6" Margin="287,51,0,0" VerticalAlignment="Top" Width="582"/>
+        <Rectangle Fill="#FF33333D" HorizontalAlignment="Left" Height="398" Margin="295,21,0,0" VerticalAlignment="Top" Width="11"/>
 
     </Grid>
 </Window>
