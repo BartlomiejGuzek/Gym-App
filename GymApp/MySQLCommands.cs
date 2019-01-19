@@ -18,9 +18,9 @@ namespace GymApp
 		//Utility functions
 		static public void Connect()
 		{
-			string server = "localhost";
-			string database = "gym";
-			string uid = "admin";
+            string server = "localhost";
+            string database = "gym";
+			string uid = "projekt";
 			string password = "pa$$word";
 			string connectionString;
 			connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
@@ -39,7 +39,7 @@ namespace GymApp
 			try
 			{
 				Connect();
-				MySqlCommand cmd = new MySqlCommand("INSERT INTO tempID (cardID) VALUES(1)", connection);
+				MySqlCommand cmd = new MySqlCommand("INSERT INTO mode (cardID) VALUES(1)", connection);
 				cmd.ExecuteNonQuery();
 				Close();
 			}
@@ -56,7 +56,7 @@ namespace GymApp
 			try
 			{
 				Connect();
-				MySqlCommand cmd = new MySqlCommand("DELETE FROM tempID WHERE (cardID = 1);", connection);
+				MySqlCommand cmd = new MySqlCommand("DELETE FROM mode WHERE (cardID = 1);", connection);
 				cmd.ExecuteNonQuery();
 				Close();
 			}
@@ -79,7 +79,7 @@ namespace GymApp
 			try
 			{
 				Connect();
-				MySqlCommand cmd = new MySqlCommand("SELECT * FROM tempID", connection);
+				MySqlCommand cmd = new MySqlCommand("SELECT * FROM mode", connection);
 				MySqlDataReader reader = cmd.ExecuteReader();
 				if(reader.HasRows)
 				{
@@ -108,7 +108,7 @@ namespace GymApp
 			try
 			{
 				Connect();
-				MySqlCommand cmd = new MySqlCommand("DELETE FROM tempID", connection);
+				MySqlCommand cmd = new MySqlCommand("DELETE FROM mode", connection);
 				cmd.ExecuteNonQuery();
 				Close();
 			}
